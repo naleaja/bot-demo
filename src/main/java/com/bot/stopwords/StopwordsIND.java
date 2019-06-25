@@ -16,8 +16,8 @@ public class StopwordsIND {
 
         try {
             if (stopWords == null)
-                //stopWords = IOUtils.readLines(StopwordsIND.class.getResourceAsStream("/stopwords"));
-            	stopWords = IOUtils.readLines(new InputStreamReader(new FileInputStream("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\stopwords")));
+                stopWords = IOUtils.readLines(StopwordsIND.class.getResourceAsStream("/stopwords"));
+            	//stopWords = IOUtils.readLines(new InputStreamReader(new FileInputStream("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\stopwords")));
 			
         } catch (IOException e) {
             throw new RuntimeException(e);

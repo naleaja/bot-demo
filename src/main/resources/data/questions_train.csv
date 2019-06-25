@@ -1,0 +1,58 @@
+index,text,answer
+1,welcome,1
+2,welcome ya,1
+3,welcome ya!,1
+4,yuhuuu,2
+5,yuhuuu!,2
+6,"yuhuuu, ada orang disana?",2
+7,hi,3
+8,halo,3
+9,hei,3
+10,halow,3
+11,helaw,3
+12,helow,3
+13,kamu siapa?,3
+14,hoi,3
+15,apa kabar?,4
+16,"hi, apa kabar?",4
+17,lagi ngapain nih?,5
+18,bisa ngapain aja nih?,6
+19,bisa ngapain aja kamu?,6
+20,bisa ngapain kamu?,6
+21,bisa ngapain aja?,6
+22,mau minta tolong,6
+23,tolongin dong,6
+24,kamu pintar ya,7
+25,wah pintar ya,7
+26,kamu pinter ya,7
+27,wah pinter ya,7
+28,wow keren,7
+29,sudah cukup,8
+30,"sudah cukup, thanks",8
+31,"tidak ada, thanks",8
+32,tidak ada,8
+33,ga jadi,9
+34,tidak jadi,9
+35,ga jadi deh,9
+36,batal,9
+37,saldo saya sekarang berapa?,10
+38,saldo saya sekarang berapa ya?,10
+39,saldo saya berapa?,10
+40,saldo saya berapa ya?,10
+41,sisa saldo saya berapa?,10
+42,sisa saldo saya berapa ya?,10
+43,sisa saldo saya berapa sekarang?,10
+44,sisa saldo,10
+45,saldo,10
+46,check saldo,10
+47,check saldo dong,10
+48,disini bisa beli apa aja?,11
+49,bisa beli apa aja sih?,11
+50,disini bisa beli apa saja?,11
+51,bisa beli apa saja sih?,11
+52,mau beli dong,11
+53,beli dong,11
+54,eh mau beli,11
+55,mau beli dong,11
+56,gw mau beli dong,11
+57,mau beli dong gw,11

@@ -86,12 +86,13 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 		TokenizerFactory tokenizerFactory = new DefaultTokenizerFactory();
 		tokenizerFactory.setTokenPreProcessor(new StemmingPreprocessor());
 	    
-	    
+		ClassLoader classLoader = getClass().getClassLoader();
+		
 	    BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
 	            .setTokenizerFactory(tokenizerFactory)
 	            .setStopWords(StopwordsIND.getStopWords())
 	         //   .setVocab(loadVocabulary(new File("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\vectorizer.bin")))
-	            .setVocab(loadVocabulary(new ClassPathResource("/vectorizer.bin").getFile()))
+	            .setVocab(loadVocabulary(new File (classLoader.getResource("vectorizer.bin").getFile())))
 	            .build();
 	    
 	    TextVectorizer textvectorizer = new TextVectorizer(vectorizer);
@@ -108,14 +109,14 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 	            answers.put(record.get(0).toInt() - 1, record.get(1).toString());
 	        }
 	    }
-		File classifierFile = new ClassPathResource("/classifier.bin").getFile();
+		File classifierFile = new File (classLoader.getResource("classifier.bin").getFile());
 		//MultiLayerNetwork network = ModelSerializer.restoreMultiLayerNetwork(new File ("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\classifier.bin"));
 		MultiLayerNetwork network = ModelSerializer.restoreMultiLayerNetwork(classifierFile);
 
 		
 		QuestionClassifier classifier = new QuestionClassifier(network, textvectorizer, answers);
 		
-		return classifier.predict("yuhuuu");
+		return classifier.predict(question);
 		
 	}
 

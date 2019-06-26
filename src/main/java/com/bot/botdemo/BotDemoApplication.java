@@ -2,6 +2,7 @@ package com.bot.botdemo;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +88,11 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 		tokenizerFactory.setTokenPreProcessor(new StemmingPreprocessor());
 	    
 		ClassLoader classLoader = getClass().getClassLoader();
-		System.out.println(ClassLoader.getSystemClassLoader().getResource("classifier.bin").toString());
+		InputStream resourceAsStream = classLoader.getResourceAsStream("vectorizer.bin");
+		if(resourceAsStream != null){
+			System.out.println("its ok");
+		
+		}
 		
 	    BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
 	            .setTokenizerFactory(tokenizerFactory)

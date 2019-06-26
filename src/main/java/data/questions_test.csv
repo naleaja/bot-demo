@@ -1,0 +1,54 @@
+index,text,answer
+1,welcome,1
+2,yuhuuu,2
+3,hi,3
+4,halo,3
+5,hei,3
+6,halow,3
+7,helaw,3
+8,helow,3
+9,kamu siapa?,3
+10,hoi,3
+11,apa kabar?,4
+12,"hi, apa kabar?",4
+13,lagi ngapain nih?,5
+14,bisa ngapain aja nih?,6
+15,bisa ngapain aja kamu?,6
+16,bisa ngapain kamu?,6
+17,bisa ngapain aja?,6
+18,mau minta tolong,6
+19,tolongin dong,6
+20,kamu pintar ya,7
+21,wah pintar ya,7
+22,kamu pinter ya,7
+23,wah pinter ya,7
+24,wow keren,7
+25,sudah cukup,8
+26,"sudah cukup, thanks",8
+27,"tidak ada, thanks",8
+28,tidak ada,8
+29,ga jadi,9
+30,tidak jadi,9
+31,ga jadi deh,9
+32,batal,9
+33,saldo saya sekarang berapa?,10
+34,saldo saya sekarang berapa ya?,10
+35,saldo saya berapa?,10
+36,saldo saya berapa ya?,10
+37,sisa saldo saya berapa?,10
+38,sisa saldo saya berapa ya?,10
+39,sisa saldo saya berapa sekarang?,10
+40,sisa saldo,10
+41,saldo,10
+42,check saldo,10
+43,check saldo dong,10
+44,disini bisa beli apa aja?,11
+45,bisa beli apa aja sih?,11
+46,disini bisa beli apa saja?,11
+47,bisa beli apa saja sih?,11
+48,mau beli dong,11
+49,beli dong,11
+50,eh mau beli,11
+51,mau beli dong,11
+52,gw mau beli dong,11
+53,mau beli dong gw,11

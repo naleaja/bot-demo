@@ -1,0 +1,13 @@
+index,answer,tag
+1,"Hi, Perkenalkan saya Ana, virtual assistant anda. Di sini Ana bisa membantu untuk inquiry saldo,beli pulsa, dan tiket pesawat. Ada yang bisa Ana bantu?",welcome
+2,"Hi, saya Ana, ada yang bisa dibantu?",greeting0
+3,"hi, saya Ana, ada yang bisa dibantu?",greeting1
+4,"baik, baik, kamu jugakan? :)",greeting2
+5,lagi belajar nih biar makin pinter ngebantu kamu :),greeting3
+6,"Ana bisa bantu untuk check saldo, beli pulsa/tiket pesawat. mau yang mana?",greeting4
+7,makasih :),salute
+8,"Ok. Senang bisa membantu. :)"", ""Terima kasih atas waktunya. Senang berbincang dengan anda :)",exit
+9,Ok,cancel
+10,"saldo anda Rp. 100.000,00, ada lagi yang bisa dibantu?",saldo
+11,"Disini bisa beli pulsa dan tiket pesawat, mau yang mana?",beli
+12,"disini bisa beli pulsa telkomsel dan XL, masukkan nomor anda",pulsa

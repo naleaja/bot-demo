@@ -1,6 +1,7 @@
 package com.bot.botdemo;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -9,6 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ExecutionException;
 
+import org.apache.commons.io.IOUtils;
 import org.datavec.api.split.FileSplit;
 import org.datavec.api.util.ClassPathResource;
 import org.datavec.api.writable.Writable;
@@ -87,26 +89,19 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 		TokenizerFactory tokenizerFactory = new DefaultTokenizerFactory();
 		tokenizerFactory.setTokenPreProcessor(new StemmingPreprocessor());
 	    
-		ClassLoader classLoader = getClass().getClassLoader();
-		InputStream resourceAsStream = classLoader.getResourceAsStream("vectorizer.bin");
-		if(resourceAsStream != null){
-			System.out.println("its ok");
-		
-		}
-		
-	    BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
+		BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
 	            .setTokenizerFactory(tokenizerFactory)
 	            .setStopWords(StopwordsIND.getStopWords())
 	         //   .setVocab(loadVocabulary(new File("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\vectorizer.bin")))
-	            .setVocab(loadVocabulary(new File (classLoader.getResource("vectorizer.bin").getFile())))
+	            .setVocab(loadVocabulary(getFile("vectorizer",".bin")))
 	            .build();
 	    
 	    TextVectorizer textvectorizer = new TextVectorizer(vectorizer);
 	    
 	    Map<Integer, String> answers = new HashMap<>();
 		try (CSVRecordReaderNew reader = new CSVRecordReaderNew(1, ',')) {
-	        reader.initialize(new FileSplit(new ClassPathResource("/data/answers.csv").getFile()));
-	
+	        //reader.initialize(new FileSplit(new ClassPathResource("/data/answers.csv").getFile()));
+			reader.initialize(new FileSplit(getFile("/data/answers",".csv")));
 	        while(reader.hasNext()) {
 	            List<Writable> record = reader.next();
 	
@@ -115,7 +110,7 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 	            answers.put(record.get(0).toInt() - 1, record.get(1).toString());
 	        }
 	    }
-		File classifierFile = new File (classLoader.getResource("classifier.bin").getFile());
+		File classifierFile = getFile("classifier",".bin");
 		//MultiLayerNetwork network = ModelSerializer.restoreMultiLayerNetwork(new File ("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\classifier.bin"));
 		MultiLayerNetwork network = ModelSerializer.restoreMultiLayerNetwork(classifierFile);
 
@@ -139,5 +134,31 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 	
 	private static VocabCache<VocabWord> loadVocabulary(File inputFile) throws IOException {
 	    return WordVectorSerializer.readVocabCache(inputFile);
+	}
+	
+	private File getFile(String prefix, String suffix) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		InputStream resourceAsStream = classLoader.getResourceAsStream(prefix+suffix);
+		if(resourceAsStream != null){
+			File file = null;
+			try {
+				file =  stream2file(resourceAsStream,prefix,suffix);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return file;
+		} else {
+			return null;
+		}
+		
+	}
+	
+	public static File stream2file(InputStream in,String prefix, String suffix) throws IOException {
+		final File tempFile = File.createTempFile(prefix, suffix);
+		tempFile.deleteOnExit();
+		try (FileOutputStream out = new FileOutputStream(tempFile)) {
+		    IOUtils.copy(in, out);
+		}
+		return tempFile;
 	}
 }

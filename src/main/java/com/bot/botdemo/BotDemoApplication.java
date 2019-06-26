@@ -87,6 +87,8 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 		tokenizerFactory.setTokenPreProcessor(new StemmingPreprocessor());
 	    
 		ClassLoader classLoader = getClass().getClassLoader();
+		System.out.println(ClassLoader.getSystemClassLoader().getResource("classifier.bin").toString());
+		
 	    BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
 	            .setTokenizerFactory(tokenizerFactory)
 	            .setStopWords(StopwordsIND.getStopWords())
@@ -95,7 +97,7 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 	            .build();
 	    
 	    TextVectorizer textvectorizer = new TextVectorizer(vectorizer);
-	    System.out.println(ClassLoader.getSystemClassLoader().getResource("classifier.bin").toString());
+	    
 	    Map<Integer, String> answers = new HashMap<>();
 		try (CSVRecordReaderNew reader = new CSVRecordReaderNew(1, ',')) {
 	        reader.initialize(new FileSplit(new ClassPathResource("/data/answers.csv").getFile()));

@@ -92,7 +92,7 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 	            .setTokenizerFactory(tokenizerFactory)
 	            .setStopWords(StopwordsIND.getStopWords())
 	         //   .setVocab(loadVocabulary(new File("C:\\app\\chatbot\\source\\Workspace\\chatbot9\\src\\main\\resources\\vectorizer.bin")))
-	            .setVocab(loadVocabulary(new File (classLoader.getResource("vectorizer.bin").getFile())))
+	            .setVocab(loadVocabulary(new File (classLoader.getResource("../resources/main/vectorizer.bin").getFile())))
 	            .build();
 	    
 	    TextVectorizer textvectorizer = new TextVectorizer(vectorizer);

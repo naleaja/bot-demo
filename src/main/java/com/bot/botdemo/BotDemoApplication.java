@@ -87,7 +87,7 @@ public class BotDemoApplication extends SpringBootServletInitializer {
 		tokenizerFactory.setTokenPreProcessor(new StemmingPreprocessor());
 	    
 		ClassLoader classLoader = getClass().getClassLoader();
-		System.out.println(new ClassPathResource("vectorizer.bin").toString());
+		System.out.println(new ClassPathResource("vectorizer.bin").getFile().getPath());
 	    BagOfWordsVectorizer vectorizer = new BagOfWordsVectorizer.Builder()
 	            .setTokenizerFactory(tokenizerFactory)
 	            .setStopWords(StopwordsIND.getStopWords())
